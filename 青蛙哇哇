@@ -1,0 +1,137 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class App {
+    JPanel myPanel=new JPanel();
+    JLabel label_background=new JLabel();
+    JLabel label_frog1=new JLabel();
+    JLabel label_frog2=new JLabel();
+    JLabel label_frog3=new JLabel();
+    JLabel label_score=new JLabel();
+    JLabel labe22=new JLabel();
+
+    JTextArea textArea_UserInput=new JTextArea();
+    int cell=128,x1=390,y1=260,x2=260,y2=100,x3=680,y3=30;
+    int wiche_frog=1;
+    int score=0;
+    String array2d_gameMap[][]= {
+            {"hello", "world", "hi"},
+            {"morning", "afternoon", "night"},
+            {"tomy", "jery", "uncle"},
+            {"abc", "def", "ghi"},
+            {"345", "678", "123"}
+    };
+
+    //构造方法
+    public App() {
+        myPanel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+                    int r=(int)(Math.random()*10%5);
+                    System.out.println(array2d_gameMap[r][0]+","+array2d_gameMap[r][1]+","+array2d_gameMap[r][2]);
+                }
+                textArea_UserInput.append(String.valueOf(e.getKeyChar()));
+                if (wiche_frog==1){
+                    if (label_frog1.getX()==2*cell && label_frog1.getY()==430 && textArea_UserInput.getText().equals("hello")){
+                        label_frog1.setBounds(x1,y1,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+
+                    }
+                    if (label_frog1.getX()==x1 && label_frog1.getY()==y1 && textArea_UserInput.getText().equals("world")){
+                        label_frog1.setBounds(x2,y2,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog1.getX()==x2 && label_frog1.getY()==y2 && textArea_UserInput.getText().equals("hi")){
+                        label_frog1.setBounds(x3,y3,cell,cell);
+                        textArea_UserInput.setText("");
+                        wiche_frog=2;
+                        score++;
+                    }
+                }
+                if (wiche_frog==2){
+                    if (label_frog2.getX()==cell && label_frog2.getY()==430 && textArea_UserInput.getText().equals("hello")){
+                        label_frog2.setBounds(x1,y1,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog2.getX()==x1 && label_frog2.getY()==y1 && textArea_UserInput.getText().equals("world")){
+                        label_frog2.setBounds(x2,y2,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog2.getX()==x2 && label_frog2.getY()==y2 && textArea_UserInput.getText().equals("hi")){
+                        label_frog2.setBounds(x3-100,y3,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                        wiche_frog=3;
+                    }
+                }
+                if (wiche_frog==3){
+                    if (label_frog3.getX()==0 && label_frog3.getY()==430 && textArea_UserInput.getText().equals("hello")){
+                        label_frog3.setBounds(x1,y1,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog3.getX()==x1 && label_frog3.getY()==y1 && textArea_UserInput.getText().equals("world")){
+                        label_frog3.setBounds(x2,y2,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog3.getX()==x2 && label_frog3.getY()==y2 && textArea_UserInput.getText().equals("hi")){
+                        label_frog3.setBounds(x3-200,y3,cell,cell);
+                        textArea_UserInput.setText("");
+                        wiche_frog=3;
+                        score++;
+                        textArea_UserInput.setVisible(false);
+                    }
+                }
+                label_score.setText("得分："+String.valueOf(score));
+                if (score==9){
+                    JOptionPane.showMessageDialog(null,"游戏结束,恭喜你过关成功！");
+                }
+            }
+        });
+    }
+    //显示窗体方法
+    void go(){
+        textArea_UserInput.setText("");
+        textArea_UserInput.setBounds(0,0,300,50);
+        java.net.URL imgURL = App.class.getResource("img/background.png");
+        label_background.setIcon(new ImageIcon(imgURL));
+        label_background.setBounds(0,0,1024,600);
+        java.net.URL imgURL2 = App.class.getResource("img/frog.png");
+        label_frog1.setIcon(new ImageIcon(imgURL2));
+        label_frog1.setBounds(2*cell,430,cell,cell);
+        label_frog2.setIcon(new ImageIcon(imgURL2));
+        label_frog2.setBounds(cell,430,cell,cell);
+        label_frog3.setIcon(new ImageIcon(imgURL2));
+        label_frog3.setBounds(0,430,cell,cell);
+        label_score.setForeground(Color.red);
+        label_score.setFont(new Font("Ariat",Font.PLAIN,25));
+        label_score.setText("得分：0");
+        label_score.setBounds(450,15,200,50);
+        myPanel.add(textArea_UserInput);
+        myPanel.add(label_score);
+        myPanel.add(label_frog1);
+        myPanel.add(label_frog2);
+        myPanel.add(label_frog3);
+        myPanel.add(label_background);
+        JFrame frame = new JFrame("TestGUI");
+        myPanel.setLayout(null);
+        frame.setContentPane(myPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setBounds(100,100,1024,600);
+        //frame.pack();
+        frame.setVisible(true);
+        myPanel.setFocusable(true);//键盘监听必须加panel面板的焦点获取才可以
+    }
+    public static void main(String[] args) {
+        new App().go();
+    }
+}
