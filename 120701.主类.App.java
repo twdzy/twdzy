@@ -9,7 +9,10 @@ public static void main(String[] args) {
 			{7,8,3,10,11,12},
 			{88,66,92,102,151,999}
 			};
-	new Find().finalizeor(array2d);
+	new Find().finalizero(array2d);
+	new Find().R_left(array2d);
+	new Find().R_righ(array2d);
+	new Find().R_up(array2d);
+	new Find().R_down(array2d);
 	}
 }
-
