@@ -30,7 +30,7 @@ public class Find {
 	}
 }
 
-
+//输出（x,y）
 package pac;
 
 public class Find {
