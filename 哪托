@@ -80,8 +80,6 @@ public class App {
         label_foreground.setIcon(new ImageIcon(imgURL999));
         label_foreground.setBounds(0,0,3*cell,4*cell);
         myPanel.add(label_foreground);
-
-
         for (int row = 0; row < array2d.length; row++) {
             for (int column = 0; column < array2d[0].length; column++) {
 
@@ -93,12 +91,6 @@ public class App {
                 count++;
             }
         }
-
-
-
-
-
-
         label_txt.setText("这是一个Label标签。");
         label_txt.setBounds(0,0,200,30);
         myPanel.add(label_txt);
