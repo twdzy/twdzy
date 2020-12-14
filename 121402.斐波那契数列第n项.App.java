@@ -7,7 +7,7 @@ public class App {
 		
 		int n,fn;
 		System.out.println("输入一个整数n，取值区间：(1<=n<=40)。");
-		java.util.Scanner s = new Scanner(System.in);
+		Scanner s = new Scanner(System.in);
 			n=s.nextInt();
 			fn=function(n);
 			if(n>=1 && n<=40){
