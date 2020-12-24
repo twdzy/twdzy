@@ -22,14 +22,38 @@ public class App {
             {"hello", "world", "hi"},
             {"morning", "afternoon", "night"},
             {"tomy", "jery", "uncle"},
-            {"abc", "def", "ghi"},
-            {"345", "678", "123"}
-    };
+            {"looks","that","way"},
+            {"break","a","leg"},
+
+            {"better","than","good"},
+            {"ready","to","serve"},
+            {"go","for","it"},
+            {"keep","me","updated"},
+            {"just","in","case"},
+
+            {"ready","to","order"},
+            {"question","for","you"},
+            {"i","got","it"},
+            {"not","a","chance"},
+            {"are","we","cool"},
+
+            {"you","tell","me"},
+            {"are","you","sure"},
+            {"be","my","guest"},
+            {"just","do","it"},
+            {"be","right","back"},
+            {"that","explains","it"},
+
+            {"be","right","back"},
+};
 
     public App() {
-        int r1=(int)(Math.random()*10%5);
-        int r2=(int)(Math.random()*10%5);
-        int r3=(int)(Math.random()*10%5);
+        int r1=(int)(Math.random()*10%21);
+        int r2=(int)(Math.random()*10%21);
+        int r3=(int)(Math.random()*10%21);
+        int r4=(int)(Math.random()*10%21);
+        int r5=(int)(Math.random()*10%21);
+        int r6=(int)(Math.random()*10%21);
         label_weizhi1.setText(array2d_gameMap[r1][0]);
         label_weizhi2.setText(array2d_gameMap[r1][1]);
         label_weizhi3.setText(array2d_gameMap[r1][2]);
@@ -95,16 +119,84 @@ public class App {
                     if (label_frog3.getX()==x2 && label_frog3.getY()==y2 && textArea_UserInput.getText().equals(array2d_gameMap[r3][2])){
                         label_frog3.setBounds(x3-200,y3,cell,cell);
                         textArea_UserInput.setText("");
-                        wiche_frog=3;
+                        score++;
+                        wiche_frog=4;
+                        label_weizhi1.setText(array2d_gameMap[r4][0]);
+                        label_weizhi2.setText(array2d_gameMap[r4][1]);
+                        label_weizhi3.setText(array2d_gameMap[r4][2]);
+                    }
+                }
+                if (label_frog3.getX()==x3-200 && label_frog3.getY()==y3){
+                    JOptionPane.showMessageDialog(null,"小青蛙都过河了！\n游戏结束\n进入下一关");
+                    label_frog1.setBounds(2*cell,430,cell,cell);
+                    label_frog2.setBounds(cell,430,cell,cell);
+                    label_frog3.setBounds(0,430,cell,cell);
+
+                }
+
+                if (wiche_frog==4){
+                    if (label_frog1.getX()==2*cell && label_frog1.getY()==430 && textArea_UserInput.getText().equals(array2d_gameMap[r4][0])){
+                        label_frog1.setBounds(x1,y1,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog1.getX()==x1 && label_frog1.getY()==y1 && textArea_UserInput.getText().equals(array2d_gameMap[r4][1])){
+                        label_frog1.setBounds(x2,y2,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog1.getX()==x2 && label_frog1.getY()==y2 && textArea_UserInput.getText().equals(array2d_gameMap[r4][2])){
+                        label_frog1.setBounds(x3,y3,cell,cell);
+                        textArea_UserInput.setText("");
+                        wiche_frog=5;
+                        score++;
+                        label_weizhi1.setText(array2d_gameMap[r5][0]);
+                        label_weizhi2.setText(array2d_gameMap[r5][1]);
+                        label_weizhi3.setText(array2d_gameMap[r5][2]);
+                    }
+                }
+
+                if (wiche_frog==5){
+                    if (label_frog2.getX()==cell && label_frog2.getY()==430 && textArea_UserInput.getText().equals(array2d_gameMap[r5][0])){
+                        label_frog2.setBounds(x1,y1,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog2.getX()==x1 && label_frog2.getY()==y1 && textArea_UserInput.getText().equals(array2d_gameMap[r5][1])){
+                        label_frog2.setBounds(x2,y2,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog2.getX()==x2 && label_frog2.getY()==y2 && textArea_UserInput.getText().equals(array2d_gameMap[r5][2])){
+                        label_frog2.setBounds(x3-100,y3,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                        wiche_frog=6;
+                        label_weizhi1.setText(array2d_gameMap[r6][0]);
+                        label_weizhi2.setText(array2d_gameMap[r6][1]);
+                        label_weizhi3.setText(array2d_gameMap[r6][2]);
+                    }
+                }
+                if (wiche_frog==6){
+                    if (label_frog3.getX()==0 && label_frog3.getY()==430 && textArea_UserInput.getText().equals(array2d_gameMap[r6][0])){
+                        label_frog3.setBounds(x1,y1,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog3.getX()==x1 && label_frog3.getY()==y1 && textArea_UserInput.getText().equals(array2d_gameMap[r6][1])){
+                        label_frog3.setBounds(x2,y2,cell,cell);
+                        textArea_UserInput.setText("");
+                        score++;
+                    }
+                    if (label_frog3.getX()==x2 && label_frog3.getY()==y2 && textArea_UserInput.getText().equals(array2d_gameMap[r6][2])){
+                        label_frog3.setBounds(x3-200,y3,cell,cell);
+                        textArea_UserInput.setText("");
+                        wiche_frog=7;
                         score++;
                         textArea_UserInput.setVisible(false);
                     }
                 }
                 label_score.setText("得分："+String.valueOf(score));
-                if (score==9){
-                    JOptionPane.showMessageDialog(null,"小青蛙都过河了！\n游戏结束");
-                }
-
             }
         });
     }
